@@ -18,7 +18,7 @@ void knapsack(int n,int m,int w[],int p[])
         {
             if(j>=w[i-1])
             {
-                if((p[i-1]+B[i-1][j-w[i-1]])>(B[i-1][j]))
+                if((p[i-1]+B[i-1][j-w[i-1]])>B[i-1][j])
                 {
                     B[i][j]=p[i-1]+B[i-1][j-w[i-1]];
                     C[i][j]='C';
@@ -36,18 +36,16 @@ void knapsack(int n,int m,int w[],int p[])
             }
         }
     }
-    cout << "Knapsack table:" << endl;
     for(int i=0; i<=n; i++)
     {
         for(int j=0; j<=m; j++)
         {
-            cout << B[i][j] << C[i][j] << " ";
+            cout << B[i][j]<< C[i][j] <<" ";
         }
         cout << endl;
     }
-    int i=n,j=m,res=0;
     cout << endl;
-    cout << "Selected items: " << endl;
+    int i=n,j=m,res=0;
     while(B[i][j])
     {
         if(C[i][j]=='C')
@@ -59,13 +57,11 @@ void knapsack(int n,int m,int w[],int p[])
         }
         else i=i-1;
     }
-    cout << endl;
-    cout << "Highest Profit: " << res << endl;
+    cout << endl << res;
 }
 int main()
 {
     int n,m,w[100],p[100];
-    cout << "Input the items:" << endl;
     cin >> n >> m;
     for(int i=0; i<n; i++)
     {
